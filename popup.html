@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AdVanish</title>
+    <style>
+        body {
+            width: 300px;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0; /* Light gray background */
+            color: #333;
+        }
+        h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #2c3e50; /* Dark blue-gray color for the title */
+        }
+        .toggle-container {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .toggle-switch {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 34px;
+        }
+        .toggle-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: .4s;
+            border-radius: 34px;
+        }
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 26px;
+            width: 26px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+        input:checked + .slider {
+            background-color: #000000;
+        }
+        input:checked + .slider:before {
+            transform: translateX(26px);
+        }
+        /* Add styles for disabled state */
+        .toggle-switch input:disabled + .slider {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+        #status {
+            font-weight: bold;
+            margin-left: 10px;
+        }
+        .popup {
+            display: none;
+            background-color: #ffffff;
+            border: 1px solid #ccc;
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
+    <h1>AdVanish</h1>
+    <div class="toggle-container">
+        <label class="toggle-switch">
+            <input type="checkbox" id="adBlockToggle" disabled>
+            <span class="slider"></span>
+        </label>
+        <span id="status">Ad Blocker: Off</span>
+    </div>
+    <div id="enabledPopup" class="popup">
+        <p>Ad Blocker activated! Refresh the webpage and proceed with ad-free website 🎉</p>
+    </div>
+    <div id="disabledPopup" class="popup">
+        <p>AdVanish disabled. Ads will be shown on websites.</p>
+    </div>
+    <script src="popup.js"></script>
+</body>
+</html>
